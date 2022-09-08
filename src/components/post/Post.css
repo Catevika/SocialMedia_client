@@ -1,0 +1,18 @@
+.post>img {
+  width: 100%;
+  max-height: 20rem;
+  -o-object-fit: cover;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.postReactions {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.postReactions-likes {
+  color: var(--gray);
+  font-size: 14px;
+}
