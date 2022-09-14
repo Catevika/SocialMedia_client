@@ -73,6 +73,11 @@ body {
   border: 2px solid var(--orange);
 }
 
+.btn:disabled {
+  background-color: silver;
+  pointer-events: none;
+}
+
 .infoInput {
   border: none;
   outline: transparent;
@@ -95,4 +100,11 @@ body {
   gap: 1rem;
   height: 2rem;
   width: 90%;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  align-self: flex-end;
+  margin: -1rem 5px 0 0;
 }
