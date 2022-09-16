@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import ProfileImage from '../../img/profileImg.jpg';
+// import ProfileImage from '../../img/profileImg.jpg';
 import { UilScenery } from '@iconscout/react-unicons';
 import { UilPlayCircle } from '@iconscout/react-unicons';
 import { UilLocationPoint } from '@iconscout/react-unicons';
@@ -10,15 +10,14 @@ import './PostShare.css';
 import { uploadImage, uploadPost } from '../../actions/uploadAction';
 
 const PostShare = () => {
-	const loading = useSelector((state) => state.postReducer.uploading);
 	const dispatch = useDispatch();
+	const { user } = useSelector((state) => state.authReducer.authData);
+	const loading = useSelector((state) => state.postReducer.uploading);
 
 	const [image, setImage] = useState(null);
-	const imageRef = useRef(null);
-	const user = useSelector(
-		(state) =>
-			state.authReducer.authData.newUser || state.authReducer.authData.user
-	);
+	const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER;
+	const imageRef = useRef();
+
 	const desc = useRef();
 
 	const onImageChange = (event) => {
@@ -28,12 +27,7 @@ const PostShare = () => {
 		}
 	};
 
-	const reset = () => {
-		setImage(null);
-		desc.current.value = '';
-	};
-
-	const handleSubmit = (e) => {
+	const handleUpload = async (e) => {
 		e.preventDefault();
 		const newPost = {
 			userId: user._id,
@@ -45,20 +39,32 @@ const PostShare = () => {
 			data.append('name', fileName);
 			data.append('file', image);
 			newPost.image = fileName;
-			console.log(newPost);
 			try {
 				dispatch(uploadImage(data));
 			} catch (error) {
-				console.log(error);
+				console.log(error.message);
 			}
 		}
 		dispatch(uploadPost(newPost));
-		reset();
+		resetShare();
+	};
+
+	// Reset Post Share
+	const resetShare = () => {
+		setImage(null);
+		desc.current.value = '';
 	};
 
 	return (
 		<div className='postShare'>
-			<img src={ProfileImage} alt='' />
+			<img
+				src={
+					user.profilePicture
+						? serverPublic + user.profilePicture
+						: serverPublic + 'defaultProfile.png'
+				}
+				alt=''
+			/>
 			<div>
 				<input
 					ref={desc}
@@ -83,8 +89,8 @@ const PostShare = () => {
 						<UilSchedule />
 						Schedule
 					</div>
-					<button className='btn' onClick={handleSubmit} disabled={loading}>
-						{loading ? 'Loading...' : 'Share'}
+					<button className='btn' onClick={handleUpload} disabled={loading}>
+						{loading ? 'Uploading...' : 'Share'}
 					</button>
 					<div className='imageLoader'>
 						<input

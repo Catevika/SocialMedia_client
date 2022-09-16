@@ -54,7 +54,7 @@ const Auth = () => {
 			{/* Right Side */}
 			<div className='authentication-right'>
 				<form className='infoForm authForm' onSubmit={handleSubmit}>
-					<h3>{isSignedUp ? 'Sign Up' : 'Log in'}</h3>
+					<h3>{isSignedUp ? 'Register' : 'Log in'}</h3>
 
 					{isSignedUp ? (
 						<div>
@@ -109,7 +109,7 @@ const Auth = () => {
 								placeholder='Password'
 								className='infoInput'
 								name='password'
-								autoComplete='password'
+								autoComplete='current-password'
 								value={data.password}
 								onChange={handleChange}
 								required
@@ -123,7 +123,7 @@ const Auth = () => {
 									placeholder='Confirm Password'
 									className='infoInput'
 									name='confirmPassword'
-									autoComplete='confirm-password'
+									autoComplete='new-password'
 									value={data.confirmPassword}
 									onChange={handleChange}
 									required
@@ -147,10 +147,10 @@ const Auth = () => {
 						>
 							{isSignedUp
 								? 'Already have an account? Log in!'
-								: 'Do not have an account? Sign up!'}
+								: 'Do not have an account? Register!'}
 						</span>
 						<button type='submit' className='btn info-btn' disabled={loading}>
-							{loading ? 'Loading...' : isSignedUp ? 'Sign up' : 'Log in'}
+							{loading ? 'Loading...' : isSignedUp ? 'Register' : 'Log in'}
 						</button>
 					</div>
 				</form>

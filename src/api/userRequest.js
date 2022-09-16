@@ -13,5 +13,12 @@ API.interceptors.request.use((req) => {
 	return req;
 });
 
-export const uploadImage = (data) => API.post('/upload', data);
-export const uploadPost = (data) => API.post('/post', data);
+export const getUser = (userId) => API.get(`/user/${userId}`);
+
+export const getAllUsers = () => API.get('/user');
+
+export const updateUser = (id, formData) => API.put(`/user/${id}`, formData);
+
+export const followUser = (id, data) => API.put(`/user/${id}/follow`, data);
+
+export const unfollowUser = (id, data) => API.put(`/user/${id}/unfollow`, data);

@@ -15,13 +15,15 @@ const postReducer = (
 			};
 		case 'UPLOAD_FAIL':
 			return { ...state, uploading: false, error: true };
+
 		// belongs to Posts.jsx
-		case 'RETREIVING_START':
+		case 'RETRIEVING_START':
 			return { ...state, loading: true, error: false };
-		case 'RETREIVING_SUCCESS':
+		case 'RETRIEVING_SUCCESS':
 			return { ...state, posts: action.data, loading: false, error: false };
-		case 'RETREIVING_FAIL':
+		case 'RETRIEVING_FAIL':
 			return { ...state, loading: false, error: true };
+
 		default:
 			return state;
 	}

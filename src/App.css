@@ -26,6 +26,12 @@ body {
   font-family: 'Inter', sans-serif;
 }
 
+a {
+  list-style: none;
+  text-decoration: none;
+  color: inherit;
+}
+
 .App {
   overflow: hidden;
   color: var(--black);
@@ -76,6 +82,27 @@ body {
 .btn:disabled {
   background-color: silver;
   pointer-events: none;
+}
+
+.btn-reverse {
+
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--orange);
+  padding: 0.5rem 1rem;
+  font-size: 14px;
+  border-radius: 0.5rem;
+  background: transparent;
+  border: 2px solid var(--orange);
+  transition: all 100ms ease-out;
+}
+
+.btn-reverse:hover {
+  cursor: pointer;
+  color: white;
+  background: var(--buttonBg);
 }
 
 .infoInput {

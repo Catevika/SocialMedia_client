@@ -10,10 +10,10 @@
   justify-content: space-between;
 }
 
-.navIcons>img {
+.navIcons>img,
+.navIcons>a>img {
   width: 1.5rem;
   height: 1.5rem;
-
 }
 
 .right-btn {

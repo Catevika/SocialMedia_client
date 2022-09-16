@@ -12,6 +12,10 @@
   gap: 1.5rem;
 }
 
+.liked {
+  cursor: pointer;
+}
+
 .postReactions-likes {
   color: var(--gray);
   font-size: 14px;
