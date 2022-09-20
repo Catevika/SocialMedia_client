@@ -78,7 +78,9 @@ const ChatBox = ({ chat, currentUserId, setSendMessage, receivedMessage }) => {
 
 	useEffect(() => {
 		// Receive Message
-		if (receivedMessage !== null) {
+		if (!receivedMessage) {
+			setMessages((messages) => messages);
+		} else {
 			setMessages((messages) => [...messages, receivedMessage]);
 			console.log('Message Arrived: ', receivedMessage);
 		}
