@@ -4,6 +4,7 @@ import Home from './pages/home/Home';
 import Profile from './pages/profile/Profile';
 import Auth from './pages/auth/Auth';
 import './App.css';
+import Chat from './pages/chat/Chat';
 
 function App() {
 	const user = useSelector((state) => state.authReducer.authData);
@@ -27,6 +28,10 @@ function App() {
 				<Route
 					path='/profile/:id'
 					element={user ? <Profile /> : <Navigate to='../auth' />}
+				/>
+				<Route
+					path='/chat'
+					element={user ? <Chat /> : <Navigate to='../auth' />}
 				/>
 			</Routes>
 		</div>

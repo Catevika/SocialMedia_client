@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import NavIcons from '../navIcons/NavIcons';
 import TrendCard from '../trendCard/TrendCard';
 import ShareModal from '../shareModal/ShareModal';
-import { UilSetting } from '@iconscout/react-unicons';
-import home from '../../img/home.png';
-import notifications from '../../img/noti.png';
-import comment from '../../img/comment.png';
 import './RightSide.css';
 
 const RightSide = () => {
@@ -13,14 +9,7 @@ const RightSide = () => {
 
 	return (
 		<div className='rightSide'>
-			<div className='navIcons'>
-				<Link to='/home' className='navIcons__home-icon'>
-					<img src={home} alt='' />
-				</Link>
-				<UilSetting />
-				<img src={notifications} alt='' />
-				<img src={comment} alt='' />
-			</div>
+			<NavIcons />
 			<TrendCard />
 			<button className='btn right-btn' onClick={() => setModalOpened(true)}>
 				Share

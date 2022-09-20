@@ -32,8 +32,7 @@ const User = ({ person }) => {
 				/>
 				<div className='name'>
 					<span>
-						{person.firstName}
-						{person.lastName}
+						{person.firstName}&nbsp;{person.lastName}
 					</span>
 					<span>{person.username}</span>
 				</div>
