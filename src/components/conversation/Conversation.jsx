@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { getUser } from '../../api/userRequest';
 import '../followersCard/FollowersCard.css';
 
-const Conversation = ({ chat, currentUserId }) => {
+const Conversation = ({ chat, currentUserId, online }) => {
 	const [userData, setUserData] = useState(null);
 	const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER;
 
@@ -23,7 +23,7 @@ const Conversation = ({ chat, currentUserId }) => {
 		<>
 			<div className='follower conversation'>
 				<div>
-					<div className='online-dot'></div>
+					{online ? <div className='online-dot'></div> : null}
 					<img
 						src={
 							userData?.profilePicture
@@ -37,7 +37,7 @@ const Conversation = ({ chat, currentUserId }) => {
 						<span>
 							{userData?.firstName} {userData?.lastName}
 						</span>
-						<span>Online</span>
+						<span>{online ? 'Online' : 'Offline'}</span>
 					</div>
 				</div>
 			</div>
