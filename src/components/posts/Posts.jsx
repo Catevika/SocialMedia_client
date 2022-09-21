@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom';
 import { getTimelinePosts } from '../../actions/postAction';
 // import { postsData } from '../../data/postsData';
 import Post from '../post/Post';
+import { v4 as uuidv4 } from 'uuid';
+
 import './Posts.css';
 
 const Posts = () => {
@@ -26,9 +28,9 @@ const Posts = () => {
 		<div className='posts'>
 			{loading
 				? 'Fetching posts....'
-				: posts.map((post, id) => {
+				: posts.map((post) => {
 						return (
-							<div key={id} className='post'>
+							<div key={uuidv4()} className='post'>
 								<Post data={post} />
 							</div>
 						);

@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { getAllUsers } from '../../api/userRequest';
 // import { followers } from '../../data - Dev/followersData';
 import User from '../user/User';
+import { v4 as uuidv4 } from 'uuid';
 
 import './FollowersCard.css';
 
@@ -22,9 +23,9 @@ const FollowersCard = () => {
 	return (
 		<div className='followersCard'>
 			<h3>People you may know</h3>
-			{persons.map((person, id) => {
+			{persons.map((person) => {
 				if (person._id !== user._id.toString()) {
-					return <User person={person} key={id} />;
+					return <User person={person} key={uuidv4()} />;
 				} else {
 					return [];
 				}
