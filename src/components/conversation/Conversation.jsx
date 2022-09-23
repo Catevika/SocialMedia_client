@@ -8,15 +8,19 @@ const Conversation = ({ chat, currentUserId, online }) => {
 
 	useEffect(() => {
 		const userId = chat.members.find((id) => id !== currentUserId);
-		const getReceiverUserData = async () => {
-			try {
-				const { data } = await getUser(userId);
-				setUserData(data);
-			} catch (error) {
-				console.log(error.message);
-			}
-		};
-		getReceiverUserData();
+		if (!userId) {
+			return null;
+		} else {
+			const getReceiverUserData = async () => {
+				try {
+					const { data } = await getUser(userId);
+					setUserData(data);
+				} catch (error) {
+					console.log(error.message);
+				}
+			};
+			if (userId) getReceiverUserData();
+		}
 	}, [chat.members, currentUserId]);
 
 	return (

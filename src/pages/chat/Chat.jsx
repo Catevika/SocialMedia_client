@@ -29,7 +29,7 @@ const Chat = () => {
 				console.log(error.message);
 			}
 		};
-		getChats();
+		if (user._id) getChats();
 	}, [user._id]);
 
 	// Connect to Socket.io

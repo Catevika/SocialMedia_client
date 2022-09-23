@@ -82,7 +82,7 @@ const ChatBox = ({ chat, currentUserId, setSendMessage, receivedMessage }) => {
 			setMessages((messages) => messages);
 		} else {
 			setMessages((messages) => [...messages, receivedMessage]);
-			console.log('Message Arrived: ', receivedMessage);
+			console.log('Message Arrived!');
 		}
 	}, [receivedMessage]);
 
